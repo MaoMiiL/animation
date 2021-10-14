@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5新特性</title>
+  <style>
+    body{
+      width: 80%;
+      height: 100%;
+      margin: 0 auto;
+      text-align: center;
+      color: #ff5000;
+    }
+    header,nav,aside,article,section,footer{
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color:rgb(170, 231, 78);
+    }
+    header,nav,footer{
+      margin: 10px 0;
+      height: 50px;
+      line-height: 50px;     
+    }
+    .contain{
+      display: flex;
+        /* 盒子需要清除浮动 */
+    }
+    .clearfix{
+      *zoom: 1;
+    }
+    .clearfix::after,
+    .clearfix::before{
+      visibility: hidden;
+      display: block;
+      content: ".";
+      clear: both;
+      height: 0;
+    }
+    aside,
+    article{
+      float: left;
+      min-height: 500px;
+    }
+
+    aside{  
+      width: 180px;      
+    }
+    article{
+      flex:1;
+      margin-left: 10px;
+    }
+    section{
+      height: 200px;
+      background-color: teal;
+    }
+  </style>
+</head>
+<body>
+  <header>头部header</header>
+  <nav>导航栏nav</nav>
+  <div class="contain clearfix">
+    <aside>侧边栏aside</aside>
+    <article>内容标签article
+      <section>文档的某个区域section</section>
+    </article>   
+  </div>
+  <footer>底部标签footer</footer>
+  <div>
+    还新增了video，audio标签属性，以及表单属性
+  </div>
+</body>
+</html>

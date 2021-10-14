@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动画animation</title>
+  <style>
+    /* 定义动画   */
+    @keyframes move {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      25% {
+        transform: translate(520px, 0);
+      }
+
+      50% {
+        transform: translate(520px, 520px);
+      }
+
+      75% {
+        transform: translate(0, 520px);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+
+    }
+
+    .box1 {
+      width: 120px;
+      height: 120px;
+      /* 文字居中 */
+      line-height: 120px;
+      text-align: center;
+      background-color: pink;
+      color: #f32415;
+      /* 调用/使用动画  */
+      animation-name: move;
+      /*动画的持续时间  */
+      animation-duration: 4s;
+      /*动画重复次数，infinite（重复/无限）  */
+      animation-iteration-count: infinite;
+      /*  是否反方向播放，默认是normal*/
+      animation-direction: alternate;
+    }
+
+    .box1:hover {
+      /* 动画是否停止 默认是running*/
+      animation-play-state: paused;
+    }
+
+    .box2 {
+      position: relative;
+      margin-left: 120px;
+      width: 400px;
+      height: 400px;
+      background-color: rgb(150, 168, 187);
+    }
+
+    /* 热点图案例 */
+    .box2 .city {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      color: #fff;
+    }
+
+    .box2 .city .dotted {
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: blueviolet;
+    }
+
+    /* 选择class以pulse开头的div */
+    .box2 div[class^="pulse"] {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 6px;
+      box-shadow: 0 0 12px blueviolet;
+      border-radius: 50%;
+      animation: pulse 1s linear infinite;
+    }
+
+    /* 注意选择器的权重问题！ */
+    .box2 .city .pulse2 {
+      animation-delay: 0.4s;
+    }
+
+    .box2 .city .pulse3 {
+      animation-delay: 0.6s;
+    }
+
+    /* 热点 的名称介绍 样式设置*/
+    .box2 span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      transform: translate(15px, -10px);
+      font-size: 12px;
+    }
+
+    @keyframes pulse {
+      0% {}
+
+      70% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+      }
+
+      100% {
+        width: 60px;
+        height: 60px;
+        opacity: 0;
+      }
+    }
+
+    /* gz  点 */
+    .box2 .gz {
+      position: absolute;
+      top: 300px;
+      left: 100px;
+      color: #fff;
+    }
+    /* 定位 */
+    .box2 .love {
+      position: absolute;
+      top: 100px;
+      left: 300px;
+      color: #fff;
+    }
+
+    /* 爱心放射 *先画一个正方形*/
+    .pos {
+      position: absolute;
+      top: -5px;
+    left: -6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 12px;
+      transform: rotate(-135deg);
+    }
+    .pos .square {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background-color: tomato;
+    }
+    .pos div[class^="circle"] {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background-color: tomato;
+      border-radius: 10px;
+    }
+    .pos .circle1 {
+      transform: translate(-50%, 0);
+    }
+    .pos .circle2 {
+      transform: translate(0, -50%);
+    }
+
+    .love div[class^="pulse"] {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      box-shadow: 0 0 22px tomato;
+    }
+
+    .box2 .loveu {
+      position: absolute;
+      top: 340px;
+      left: 260px;
+      color: #fff;
+    }
+    .box3{
+      position: relative;
+      top:120px;
+      left: 120px;
+      width: 0px;
+      height: 30px;
+      font-size: 20px;
+      white-space: nowrap;
+      background-color: rgb(52, 167, 128);
+      color: #fff;
+      /* step()分几步完成 */
+      animation: scale 2s steps(6) forwards alternate infinite;   
+    }
+    @keyframes scale {
+      0%{}
+      100%{
+        width: 120px;
+      }
+    }
+
+    /* 奔跑的小熊 案例 */
+    .box4{
+      position: relative;
+      margin-top: 160px; 
+      height: 100px;   
+      background-color: #e0edfb;    
+    }
+    .box4 .bear{
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 200px;  
+      height: 100px;
+      background: url("./images/image02.jpg") no-repeat;
+      /* 多个动画组合 */
+      animation: bear-run 1s steps(8) infinite,bear-run-x 4s forwards ease-in-out;
+    }
+    @keyframes bear-run {
+      0%{
+        background-position: 0 0;
+      }
+      100%{
+        background-position: -1600px 0;
+      }
+    }
+    @keyframes bear-run-x {
+      0%{}
+      80%{
+          left:45%;
+      }
+      100%{
+        left:50%;
+        transform: translateX(-50%);
+      }
+    }
+    @keyframes identifier {
+      
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+  <div class="box1">感谢pink老师！</div>
+  <div class="box2">
+    <div class="city">
+      <div class="dotted"></div>
+      <div class="pulse1"></div>
+      <div class="pulse2"></div>
+      <div class="pulse3"></div>
+      <span>左上角</span>
+    </div>
+    <div class="city gz">
+      <div class="dotted"></div>
+      <div class="pulse1"></div>
+      <div class="pulse2"></div>
+      <div class="pulse3"></div>
+      <span>左下角</span>
+    </div>
+    <!-- 爱心 -->
+    <div class="city love">
+      <div class="pos">
+        <div class="square"></div>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+      </div>
+      <div class="pulse1"></div>
+      <div class="pulse2"></div>
+      <div class="pulse3"></div>
+      <span>右上角</span>     
+    </div>
+    <div class="city loveu">
+      <div class="pos">
+        <div class="square"></div>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+      </div>
+      <div class="pulse1"></div>
+      <div class="pulse2"></div>
+      <div class="pulse3"></div> 
+      <span>右下角</span>       
+    </div>
+  </div>
+  <!--step() 打字机效果 -->
+  <div class="box3">你好李焕英</div>
+  <!-- 案列一：奔跑的熊大 -->
+  <div class="box4">
+    <div class="bear"></div>
+  </div>
+
+</body>
+
+</html>
